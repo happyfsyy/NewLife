@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NewLife</string>
+    <string name="button1">BUTTON1</string>
+    <string name="button2">BUTTON2</string>
+    <string name="add_item">Add</string>
+    <string name="remove_item">Remove</string>
 </resources>
