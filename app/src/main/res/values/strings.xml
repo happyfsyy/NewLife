@@ -4,4 +4,10 @@
     <string name="button2">BUTTON2</string>
     <string name="add_item">Add</string>
     <string name="remove_item">Remove</string>
+    <string name="title_activity_ui">UiActivity</string>
+    <string name="editText_hint">Type something here</string>
+
+    <string name="test_textView">TestTextView</string>
+    <string name="test_button">TestButton</string>
+
 </resources>

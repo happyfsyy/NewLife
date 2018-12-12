@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/test_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/view_parent_margin"
+        android:layout_marginEnd="@dimen/view_parent_margin"
+        android:layout_marginTop="@dimen/view_parent_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/test_textView"
+        style="@style/CodeFont"/>
+    <Button
+        android:id="@+id/test_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/view_parent_margin"
+        android:layout_marginEnd="@dimen/view_parent_margin"
+        android:layout_marginTop="@dimen/view_view_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/test_textView"
+        android:text="@string/test_button"
+        style="@style/CodeFont"
+        />
+    <EditText
+        android:id="@+id/test_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/view_parent_margin"
+        android:layout_marginEnd="@dimen/view_parent_margin"
+        android:layout_marginTop="@dimen/view_view_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/test_button"
+        android:hint="@string/editText_hint"
+        style="@style/CodeFont"
+        android:maxLines="2"/>
+    <ImageView
+        android:id="@+id/test_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginStart="@dimen/view_parent_margin"
+        android:layout_marginTop="@dimen/view_view_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/test_editText"
+        />
+
+    <ProgressBar
+        android:id="@+id/test_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_view_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/test_imageView" />
+
+</android.support.constraint.ConstraintLayout>
