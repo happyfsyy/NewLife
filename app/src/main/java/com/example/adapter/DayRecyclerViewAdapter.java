@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bean.Day;
 import com.example.newlife.R;
@@ -28,7 +29,20 @@ public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayRecyclerView
     @Override
     public DayVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view=LayoutInflater.from(parent.getContext()).inflate(resId,parent,false);
-        DayVH viewHolder=new DayVH(view);
+        final DayVH viewHolder=new DayVH(view);
+        viewHolder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(),"you have clicked the item"+viewHolder.getAdapterPosition(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        viewHolder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(),dayList.get(viewHolder.getAdapterPosition()).getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
         return viewHolder;
     }
 
@@ -47,9 +61,11 @@ public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayRecyclerView
     class DayVH extends RecyclerView.ViewHolder{
         ImageView img;
         TextView name;
+        View view;
 
         public DayVH(@NonNull View itemView) {
             super(itemView);
+            view=itemView;
             img=itemView.findViewById(R.id.day_icon2);
             name=itemView.findViewById(R.id.day_name2);
         }
