@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,7 +47,18 @@ public class DayAdapter extends ArrayAdapter<Day> {
         viewHolder.name.setText(day.getName());
         return  view;
     }
-    class DayViewHolder{
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return super.getViewTypeCount();
+    }
+
+    public class DayViewHolder{
         ImageView icon;
         TextView name;
     }

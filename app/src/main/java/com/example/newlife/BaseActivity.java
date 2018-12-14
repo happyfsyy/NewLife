@@ -3,11 +3,13 @@ package com.example.newlife;
 import android.app.Activity;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 
 import com.example.utils.ActivityCollector;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
     private static final String TAG = "BaseActivity";
 
     @Override

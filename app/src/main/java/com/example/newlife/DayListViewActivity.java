@@ -27,6 +27,7 @@ public class DayListViewActivity extends BaseActivity {
         initData();
         DayAdapter adapter=new DayAdapter(this,R.layout.day_item,dayList);
         listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
