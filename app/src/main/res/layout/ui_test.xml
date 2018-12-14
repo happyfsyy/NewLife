@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -36,8 +36,8 @@
         android:layout_marginStart="@dimen/view_parent_margin"
         android:layout_marginEnd="@dimen/view_parent_margin"
         android:layout_marginTop="@dimen/view_view_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/test_button"
         android:hint="@string/editText_hint"
         style="@style/CodeFont"
@@ -49,7 +49,7 @@
         android:src="@mipmap/ic_launcher"
         android:layout_marginStart="@dimen/view_parent_margin"
         android:layout_marginTop="@dimen/view_view_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/test_editText"
         />
 
@@ -62,4 +62,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/test_imageView" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
