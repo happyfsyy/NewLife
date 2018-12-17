@@ -38,7 +38,7 @@ public class DayAdapter extends ArrayAdapter<Day> {
             viewHolder.icon=view.findViewById(R.id.day_icon);
             viewHolder.name=view.findViewById(R.id.day_name);
             view.setTag(viewHolder);
-            Log.i(TAG,"converView==null");
+            Log.i(TAG,"convertView==null");
         }else{
             view=convertView;
             viewHolder=(DayViewHolder)view.getTag();

@@ -1,9 +1,13 @@
 package com.example.newlife;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.adapter.DayRecyclerViewAdapter;
 import com.example.bean.Day;
+import com.example.listener.OnClickListener;
+import com.example.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +19,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public class DayRecyclerViewActivity extends BaseActivity {
-    private RecyclerView recyclerView;
     private List<Day> dayList;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_recyclerview);
         initData();
+        RecyclerView recyclerView;
         recyclerView=findViewById(R.id.recyclerView);
 //        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
 //        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         DayRecyclerViewAdapter adapter=new DayRecyclerViewAdapter(R.layout.day_recycler_view_item,dayList);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(RecyclerView parent, View view, int position) {
+                Toast.makeText(DayRecyclerViewActivity.this, "setOnItemClick"+dayList.get(position).getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        adapter.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(DayRecyclerViewActivity.this, "setOnClickListener"+dayList.get(position).getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
 

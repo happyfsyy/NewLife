@@ -10,3 +10,5 @@
 * UiActivity主要用于测试TextView、Button、EditText、ImageView、ProgressBar、Dialog等等各种控件。
 * ui_test.xml主要是用于测试ConstraintLayout，以及BorderlessButton和CodeFont等各种style。
 * DayListViewActivity主要是用于测试ListView。
+* DayRecyclerViewActivity主要是测试RecyclerView。
+* OnItemClickListener可以作为之后所有RecyclerView.Adapter<>的监听器。
