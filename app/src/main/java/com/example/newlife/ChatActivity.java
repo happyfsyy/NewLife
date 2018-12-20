@@ -17,7 +17,7 @@ import com.example.listener.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends BaseActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Message> mList;
     @Override
