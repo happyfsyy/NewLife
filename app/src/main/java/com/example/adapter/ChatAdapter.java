@@ -34,12 +34,12 @@ public class ChatAdapter extends BaseAdapter<Message>{
     }
 
     @Override
-    BaseViewHolder onCreate(View itemView) {
+    protected BaseViewHolder onCreate(View itemView) {
         return new ChatViewHolder(itemView);
     }
 
     @Override
-    void onBind(RecyclerView.ViewHolder holder, int position) {
+    protected void onBind(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof ChatViewHolder){
             ChatViewHolder viewHolder=(ChatViewHolder)holder;
             int type=mList.get(position).getType();

@@ -9,5 +9,6 @@
 * DayListViewActivity主要是用于测试ListView。
 * DayRecyclerViewActivity主要是测试RecyclerView。
 * OnItemClickListener可以作为之后所有RecyclerView.Adapter<>的监听器。
-* ChatActivity实现了一个简单的聊天界面
-* BaseAdapter封装了一个简单的RecyclerView.Adapter的实现
+* ChatActivity实现了一个简单的聊天界面。
+* BaseAdapter封装了一个简单的RecyclerView.Adapter的实现。
+* FragmentTestActivity测试了Fragment和Activity之间交互时候的生命周期。

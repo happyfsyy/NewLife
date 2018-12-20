@@ -54,6 +54,6 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
         return mList.size();
     }
 
-    abstract BaseViewHolder onCreate(View itemView);
-    abstract void onBind(RecyclerView.ViewHolder holder,int position);
+    protected abstract BaseViewHolder onCreate(View itemView);
+    protected abstract void onBind(RecyclerView.ViewHolder holder,int position);
 }
