@@ -9,22 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".SecondActivity">
             <intent-filter>
                 <action android:name="com.example.newlife.ACTION_START" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.example.newlife.MY_CATEGORY" />
             </intent-filter>
         </activity>
-        <activity android:name=".UiActivity">
-        </activity>
-        <activity android:name=".DayListViewActivity">
-        </activity>
+        <activity android:name=".UiActivity"></activity>
+        <activity android:name=".DayListViewActivity"></activity>
         <activity android:name=".DayRecyclerViewActivity">
+
+        </activity>
+        <activity android:name=".ChatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
