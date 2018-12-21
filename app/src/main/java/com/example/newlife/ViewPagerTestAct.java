@@ -2,6 +2,7 @@ package com.example.newlife;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -20,6 +21,8 @@ public class ViewPagerTestAct extends BaseActivity{
     private LinearLayout dotViewGroup;
     private List<View> mDots;
 
+    private static final String TAG = "---------------";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +38,19 @@ public class ViewPagerTestAct extends BaseActivity{
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                Log.e(TAG,"----->>>onPageScrolled()-----");
             }
 
             @Override
             public void onPageSelected(int position) {
+                Log.e(TAG,"----->>>onPageSelected()-----");
                 clear();
                 mDots.get(position).setBackgroundResource(R.drawable.dot_focused);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                Log.e(TAG,"----->>>onPageScrollStateChanged()-----");
             }
         });
     }
@@ -86,38 +90,38 @@ public class ViewPagerTestAct extends BaseActivity{
         }
 
 
-
-
-
-
     }
 
     class MyPagerAdapter extends PagerAdapter{
         private List<View> mList;
         public MyPagerAdapter(List<View> list){
+            Log.e(TAG,"----->>>MyPagerAdapter()-----");
             mList=list;
         }
         @Override
         public int getCount() {
+            Log.e(TAG,"----->>>getCount()-----");
             return mList.size();
         }
 
         @Override
         public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+            Log.e(TAG,"----->>>isViewFromObject()-----");
             return view==object;
         }
 
         @Override
-        public void destroyItem(@NonNull View container, int position, @NonNull Object object) {
-//            super.destroyItem(container, position, object);
-            ((ViewGroup)container).removeView(mList.get(position));
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            Log.e(TAG,"----->>>destroyItem()-----");
+            container.removeView(mList.get(position));
         }
 
         @NonNull
         @Override
-        public Object instantiateItem(@NonNull View container, int position) {
-            ((ViewGroup)container).addView(mList.get(position),0);
-            return mList.get(position);
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            Log.e(TAG,"----->>>instantiateItem()-----");
+            container.addView(mList.get(position));
+            return  mList.get(position);
         }
     }
 
