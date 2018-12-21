@@ -3,8 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/visibility_layout"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible">
         <TextView
             android:id="@+id/news_content_title_text"
             android:layout_width="wrap_content"
@@ -26,5 +28,6 @@
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:background="#000000"/>
 </RelativeLayout>

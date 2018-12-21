@@ -55,11 +55,11 @@ public class FragmentTestActivity extends BaseActivity {
 
 
     private void replaceFragment(Fragment fragment){
-//        FragmentManager fragmentManager=getSupportFragmentManager();
-//        FragmentTransaction transaction=fragmentManager.beginTransaction();
-//        transaction.replace(R.id.right_layout,fragment);
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction transaction=fragmentManager.beginTransaction();
+        transaction.replace(R.id.right_layout,fragment);
 //        transaction.addToBackStack(null);
-//        transaction.commit();
+        transaction.commit();
     }
 
     @Override

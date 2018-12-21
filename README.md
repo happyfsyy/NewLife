@@ -12,3 +12,4 @@
 * ChatActivity实现了一个简单的聊天界面。
 * BaseAdapter封装了一个简单的RecyclerView.Adapter的实现。
 * FragmentTestActivity测试了Fragment和Activity之间交互时候的生命周期。
+* NewsActivity是一个简易版本的新闻应用，兼顾手机和平板

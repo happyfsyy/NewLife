@@ -45,7 +45,7 @@ public class NewsTitleFragment extends Fragment {
                 String title=list.get(position).getTitle();
                 String content=list.get(position).getContent();
                 if(isTwoPane){
-                    NewsContentFragment fragment=(NewsContentFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.news_content_fragment);
+                    NewsContentFragment fragment=(NewsContentFragment)getFragmentManager().findFragmentById(R.id.news_content_fragment);
                     fragment.setData(title,content);
                 }else{
                     NewsContentActivity.startAct(getActivity(),title,content);
@@ -87,26 +87,26 @@ public class NewsTitleFragment extends Fragment {
     }
 
     class NewsTitleAdapter extends BaseAdapter<News>{
-        class NewsTitleViewHoler extends BaseAdapter.BaseViewHolder{
+        class NewsTitleViewHolder extends BaseViewHolder{
             TextView titleText;
 
-            public NewsTitleViewHoler(@NonNull View itemView) {
+            NewsTitleViewHolder(@NonNull View itemView) {
                 super(itemView);
                 titleText=itemView.findViewById(R.id.news_title_text);
             }
         }
-        public NewsTitleAdapter(List<News> list, int itemResId) {
+        NewsTitleAdapter(List<News> list, int itemResId) {
             super(list, itemResId);
         }
 
         @Override
         protected BaseViewHolder onCreate(View itemView) {
-            return  new NewsTitleViewHoler(itemView);
+            return  new NewsTitleViewHolder(itemView);
         }
 
         @Override
         protected void onBind(RecyclerView.ViewHolder holder, int position) {
-            ((NewsTitleViewHoler)holder).titleText.setText(mList.get(position).getTitle());
+            ((NewsTitleViewHolder)holder).titleText.setText(mList.get(position).getTitle());
         }
     }
 

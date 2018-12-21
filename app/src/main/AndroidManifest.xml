@@ -26,16 +26,18 @@
         <activity android:name=".ChatActivity">
         </activity>
         <activity android:name=".FragmentTestActivity">
-
         </activity>
         <activity android:name=".NewsActivity">
+
+        </activity>
+        <activity android:name=".NewsContentActivity"/>
+        <activity android:name=".ViewPagerTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsContentActivity"/>
     </application>
 
 </manifest>
