@@ -3,7 +3,9 @@ package com.example.newlife;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -47,6 +50,12 @@ public class BroadcastLoginActivity extends BaseActivity{
     private EditText account;
     private EditText password;
     private Button login;
+    private CheckBox rememberPwd;
+
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private boolean isRememberPwd;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +64,17 @@ public class BroadcastLoginActivity extends BaseActivity{
         account=findViewById(R.id.login_account);
         password=findViewById(R.id.login_password);
         login=findViewById(R.id.login_button);
+        rememberPwd=findViewById(R.id.remember_password);
+
+        preferences=getPreferences(Context.MODE_PRIVATE);
+        isRememberPwd=preferences.getBoolean("isRememberPwd",false);
+        if(isRememberPwd){
+            String accountText=preferences.getString("accountText","");
+            String passwordText=preferences.getString("passwordText","");
+            account.setText(accountText);
+            password.setText(passwordText);
+            rememberPwd.setChecked(true);
+        }
 
         login.setOnClickListener(new OnClickListener() {
             @Override
@@ -62,6 +82,16 @@ public class BroadcastLoginActivity extends BaseActivity{
                 String accountText=account.getText().toString();
                 String passwordText=password.getText().toString();
                 if(accountText.equals("ale246")&&passwordText.equals("123456")){
+                    SharedPreferences.Editor editor=preferences.edit();
+                    if(rememberPwd.isChecked()){
+                        editor.putBoolean("isRememberPwd",true);
+                        editor.putString("accountText",accountText);
+                        editor.putString("passwordText",passwordText);
+                    }else{
+                        editor.clear();
+                    }
+                    editor.apply();
+
                     Intent intent=new Intent(BroadcastLoginActivity.this,ForceOffLineAct.class);
                     startActivity(intent);
                 }else{

@@ -57,20 +57,22 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <activity android:name=".SendBroadcastAct">
-
         </activity>
         <activity
             android:name=".BroadcastLoginActivity"
             android:label="@string/title_activity_boradcast_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ForceOffLineAct"/>
+        <activity android:name=".FileWriteReadAct">
+        </activity>
+        <activity android:name=".PrefSaveRestoreAct">
+
+        </activity>
     </application>
 
 </manifest>

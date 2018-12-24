@@ -17,3 +17,7 @@
 ![tablet](https://raw.githubusercontent.com/happyfsyy/NewLife/master/app/img_folder/img2.PNG)
 * CycleViewPagerAct实现循环滑动ViewPager。
 * ViewPagerFragAct实现基本的ViewPager+Fragment。
+* SendBroadcastAct发送自定义广播。
+* BroadcastLoginActivity实现强制下线以及记住密码功能。
+* FileReadWriteAct实现向文件存入数据以及从文件读取数据功能。
+* PrefSaveRestoreAct实现采用SharedPreference存储和读取数据的功能。
