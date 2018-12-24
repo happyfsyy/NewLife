@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.newlife">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -10,6 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- <receiver android:name="com.example.broadcast_receiver.MyBroadcastReceiver" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter android:priority="100"> -->
+        <!-- <action android:name="com.example.newlife.MY_BROADCAST"/> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity">
             <intent-filter>
@@ -21,24 +39,38 @@
         </activity>
         <activity android:name=".UiActivity" />
         <activity android:name=".DayListViewActivity" />
-        <activity android:name=".DayRecyclerViewActivity"></activity>
-        <activity android:name=".ChatActivity"></activity>
-        <activity android:name=".FragmentTestActivity"></activity>
-        <activity android:name=".NewsActivity">
+        <activity android:name=".DayRecyclerViewActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".FragmentTestActivity" />
+        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".NewsContentActivity" />
+        <activity android:name=".ViewPagerTestAct" />
+        <activity android:name=".CycleViewPagerAct" />
+        <activity android:name=".ViewPagerFragAct" />
+        <activity android:name=".MonitorSystemBroadcastAct"></activity>
+
+        <receiver
+            android:name="com.example.broadcast_receiver.BootCompleteReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".SendBroadcastAct">
+
+        </activity>
+        <activity
+            android:name=".BroadcastLoginActivity"
+            android:label="@string/title_activity_boradcast_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsContentActivity" />
-        <activity android:name=".ViewPagerTestAct"></activity>
-        <activity android:name=".CycleViewPagerAct">
-
-        </activity>
-        <activity android:name=".ViewPagerFragAct">
-
-        </activity>
+        <activity android:name=".ForceOffLineAct"/>
     </application>
 
 </manifest>
