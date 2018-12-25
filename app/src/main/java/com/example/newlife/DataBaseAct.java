@@ -1,6 +1,7 @@
 package com.example.newlife;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.bean.BookSerializable;
+import com.example.bean.CategoryParcelable;
 
 import java.net.FileNameMap;
 
@@ -22,7 +26,7 @@ public class DataBaseAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_base);
 
-        dbHelper=new MyDataBaseHelper(DataBaseAct.this,"BookStore.db",null,1);
+        dbHelper=new MyDataBaseHelper(DataBaseAct.this,"BookStore.db",null,2);
 
         Button create=findViewById(R.id.create_database);
         create.setOnClickListener(new View.OnClickListener() {
@@ -37,24 +41,28 @@ public class DataBaseAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SQLiteDatabase db=dbHelper.getWritableDatabase();
+//                ContentValues values=new ContentValues();
+//                values.put("author","ale");
+//                values.put("price",18.8);
+//                values.put("pages",200);
+//                values.put("name","thinking in java");
+//                db.insert("Book",null,values);
+//                values.clear();
+//                values.put("author","ale2");
+//                values.put("price",19.9);
+//                values.put("pages",250);
+//                values.put("name","thinking in java2");
+//                db.insert("Book",null,values);
+//                values.clear();
+//                values.put("author","ale3");
+//                values.put("price",29.9);
+//                values.put("pages",450);
+//                values.put("name","thinking in java3");
+//                db.insert("Book",null,values);
                 ContentValues values=new ContentValues();
-                values.put("author","ale");
-                values.put("price",18.8);
-                values.put("pages",200);
-                values.put("name","thinking in java");
-                db.insert("Book",null,values);
-                values.clear();
-                values.put("author","ale2");
-                values.put("price",19.9);
-                values.put("pages",250);
-                values.put("name","thinking in java2");
-                db.insert("Book",null,values);
-                values.clear();
-                values.put("author","ale3");
-                values.put("price",29.9);
-                values.put("pages",450);
-                values.put("name","thinking in java3");
-                db.insert("Book",null,values);
+                values.put("category_name","hello1");
+                values.put("category_code",111);
+                db.insert("Category",null,values);
                 Toast.makeText(DataBaseAct.this,"add succeed",Toast.LENGTH_SHORT).show();
             }
         });
@@ -121,6 +129,50 @@ public class DataBaseAct extends AppCompatActivity {
                     e.printStackTrace();
                 }finally {
                     db.endTransaction();
+                }
+            }
+        });
+
+        Button transfer=findViewById(R.id.transfer_data);
+        transfer.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 只是为了测试传输序列化数据
+             * @param v
+             */
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db=dbHelper.getReadableDatabase();
+                Cursor cursor=db.query("Book",null,null,null,null,null,null);
+                if(cursor.moveToNext()){
+                    BookSerializable bookSerializable=new BookSerializable();
+                    String name=cursor.getString(cursor.getColumnIndex("name"));
+                    float prices=cursor.getFloat(cursor.getColumnIndex("price"));
+                    bookSerializable.setName(name);
+                    bookSerializable.setPrice(prices);
+                    Intent intent=new Intent(DataBaseAct.this,ReceiveDataAct.class);
+                    Bundle bundle=new Bundle();
+                    bundle.putSerializable("book",bookSerializable);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        Button transfer2=findViewById(R.id.transfer_data2);
+        transfer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db=dbHelper.getReadableDatabase();
+                Cursor cursor=db.query("Category",null,null,null,null,null,null);
+                if(cursor.moveToNext()){
+                    String name=cursor.getString(cursor.getColumnIndex("category_name"));
+                    int code=cursor.getInt(cursor.getColumnIndex("category_code"));
+                    CategoryParcelable categoryParcelable=new CategoryParcelable();
+                    categoryParcelable.setCategoryName(name);
+                    categoryParcelable.setCategoryCode(code);
+                    Intent intent=new Intent(DataBaseAct.this,ReceiveDataAct.class);
+                    intent.putExtra("category",categoryParcelable);
+                    startActivity(intent);
                 }
             }
         });

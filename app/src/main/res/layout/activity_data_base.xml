@@ -27,4 +27,12 @@
         android:id="@+id/replace_data"
         style="@style/ButtonStyle"
         android:text="Replace Data"/>
+    <Button
+        android:id="@+id/transfer_data"
+        style="@style/ButtonStyle"
+        android:text="Serializable Data"/>
+    <Button
+        android:id="@+id/transfer_data2"
+        style="@style/ButtonStyle"
+        android:text="Parcelable Data"/>
 </LinearLayout>

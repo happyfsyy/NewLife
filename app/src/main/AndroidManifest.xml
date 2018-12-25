@@ -62,14 +62,16 @@
         <activity android:name=".ForceOffLineAct" />
         <activity android:name=".FileWriteReadAct"></activity>
         <activity android:name=".PrefSaveRestoreAct"></activity>
-        <activity android:name=".DataBaseAct"></activity>
-        <activity android:name=".RuntimePermissionAct"></activity>
-        <activity android:name=".ReadContactsAct">
+        <activity android:name=".DataBaseAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".RuntimePermissionAct"></activity>
+        <activity android:name=".ReadContactsAct">
+
         </activity>
 
         <provider
@@ -77,6 +79,12 @@
             android:authorities="com.example.newlife.provider"
             android:enabled="true"
             android:exported="true"></provider>
+
+        <activity android:name=".NotificationAct">
+        </activity>
+        <activity android:name=".ReceiveDataAct">
+
+        </activity>
     </application>
 
 </manifest>

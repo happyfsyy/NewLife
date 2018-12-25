@@ -21,3 +21,9 @@
 * BroadcastLoginActivity实现强制下线以及记住密码功能。
 * FileReadWriteAct实现向文件存入数据以及从文件读取数据功能。
 * PrefSaveRestoreAct实现采用SharedPreference存储和读取数据的功能。
+* DataBaseAct实现数据库基本的CRUD操作。
+* RunTimePermissionAct测试一些运行时权限。
+* ReadContactsAct通过ContentResolver获取手机通讯录信息。
+* MyContentProvider创建了一个内容提供器，可供外界程序访问。
+* NotificationAct实现了基本的Notification。
+* ReceiveDataAct接收了从DataBaseAct传输过来的数据，测试了Serializable和Parcelable方式。
