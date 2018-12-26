@@ -63,11 +63,7 @@
         <activity android:name=".FileWriteReadAct"></activity>
         <activity android:name=".PrefSaveRestoreAct"></activity>
         <activity android:name=".DataBaseAct">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".RuntimePermissionAct"></activity>
         <activity android:name=".ReadContactsAct">
@@ -83,8 +79,15 @@
         <activity android:name=".NotificationAct">
         </activity>
         <activity android:name=".ReceiveDataAct">
-
         </activity>
+        <activity android:name=".AlarmAct">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RingAct"></activity>
     </application>
 
 </manifest>
