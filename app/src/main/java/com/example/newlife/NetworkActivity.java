@@ -7,8 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.listener.HttpCallbackListener;
+import com.example.utils.HttpUtils;
 import com.example.utils.LogUtils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -20,8 +28,13 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+
+import javax.xml.parsers.SAXParserFactory;
 
 import androidx.annotation.Nullable;
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -89,6 +102,21 @@ public class NetworkActivity extends Activity {
         }).start();
     }
 
+    private void sendHttpRequest(){
+        String address="https://www.baidu.com";
+        HttpUtils.sendHttpRequest(address, new HttpCallbackListener() {
+            @Override
+            public void onFinish(String response) {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+    }
+
     private void sendRequestWithOkHttp(){
         new Thread(new Runnable() {
             @Override
@@ -100,16 +128,34 @@ public class NetworkActivity extends Activity {
                             .add("password","123456")
                             .build();
                     Request request=new Request.Builder()
-                            .url("http://192.168.248.2/get_data.xml")
+                            .url("http://192.168.248.2/get_data.json")
                             .build();
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
-                    parseXMLWithPull(responseData);
+//                    parseXMLWithPull(responseData);
+//                    parseXMLWithSAX(responseData);
+//                    parseJsonWithJSONObject(responseData);
+                    parseJsonWithGSON(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    private void sendOkHttpRequest(){
+        String address="https://www.baidu.com";
+        HttpUtils.sendOkHttpRequest(address, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String responseData=response.body().string();
+            }
+        });
     }
 
     private void showResponse(final String text){
@@ -174,4 +220,71 @@ public class NetworkActivity extends Activity {
 
     }
 
+    private void parseXMLWithSAX(String xmlData){
+        try{
+            SAXParserFactory factory=SAXParserFactory.newInstance();
+            XMLReader xmlReader=factory.newSAXParser().getXMLReader();
+            xmlReader.setContentHandler(new ContentHandler());
+            xmlReader.parse(new InputSource(new StringReader(xmlData)));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void parseJsonWithJSONObject(String jsonData){
+        try {
+            JSONArray jsonArray = new JSONArray(jsonData);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String id = jsonObject.getString("id");
+                String version = jsonObject.getString("version");
+                String name = jsonObject.getString("name");
+                LogUtils.e(TAG, "id->" + id);
+                LogUtils.e(TAG, "version->" + version);
+                LogUtils.e(TAG, "name->" + name);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseJsonWithGSON(String jsonData) {
+        Gson gson=new Gson();
+        List<App> apps=gson.fromJson(jsonData,new TypeToken<List<App>>(){}.getType());
+        for(App app:apps){
+            LogUtils.e(TAG,"id->"+app.getId());
+            LogUtils.e(TAG,"version->"+app.getVersion());
+            LogUtils.e(TAG,"name->"+app.getName());
+        }
+    }
+
+    class App{
+        private String id;
+        private String version;
+        private String name;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getVersion() {
+            return version;
+        }
+
+        public void setVersion(String version) {
+            this.version = version;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }
