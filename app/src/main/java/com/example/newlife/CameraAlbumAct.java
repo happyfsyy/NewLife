@@ -106,7 +106,10 @@ public class CameraAlbumAct extends AppCompatActivity {
         String file_name="img_"+new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())+".jpg";
         //将图片放入手机SD卡的应用关联缓存目录下，不需要进行运行时权限处理
 //        File dir=getExternalCacheDir();
+//        File dir=Environment.getExternalStorageDirectory();
+//        File dir=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File dir=getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        LogUtils.e(TAG+"->dir",dir.getAbsolutePath());
         File temp=new File(dir,file_name);
         //判断文件是否存在
         try{
