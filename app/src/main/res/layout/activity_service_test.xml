@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/service_start_button"
+        android:text="Start Service"
+        style="@style/ButtonStyle"/>
+    <Button
+        android:id="@+id/service_stop_button"
+        android:text="Stop Service"
+        style="@style/ButtonStyle"/>
+</LinearLayout>

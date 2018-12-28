@@ -7,9 +7,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -58,38 +58,29 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".SendBroadcastAct"></activity>
+        <activity android:name=".SendBroadcastAct" />
         <activity
             android:name=".BroadcastLoginActivity"
-            android:label="@string/title_activity_boradcast_login"></activity>
+            android:label="@string/title_activity_boradcast_login" />
         <activity android:name=".ForceOffLineAct" />
-        <activity android:name=".FileWriteReadAct"></activity>
-        <activity android:name=".PrefSaveRestoreAct"></activity>
-        <activity android:name=".DataBaseAct">
-
-        </activity>
-        <activity android:name=".RuntimePermissionAct"></activity>
-        <activity android:name=".ReadContactsAct">
-
-        </activity>
+        <activity android:name=".FileWriteReadAct" />
+        <activity android:name=".PrefSaveRestoreAct" />
+        <activity android:name=".DataBaseAct"></activity>
+        <activity android:name=".RuntimePermissionAct" />
+        <activity android:name=".ReadContactsAct"></activity>
 
         <provider
             android:name=".MyContentProvider"
             android:authorities="com.example.newlife.provider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
 
-        <activity android:name=".NotificationAct">
-        </activity>
-        <activity android:name=".ReceiveDataAct">
-        </activity>
-        <activity android:name=".AlarmAct">
+        <activity android:name=".NotificationAct"></activity>
+        <activity android:name=".ReceiveDataAct"></activity>
+        <activity android:name=".AlarmAct"></activity>
+        <activity android:name=".RingAct" />
+        <activity android:name=".CameraAlbumAct"></activity>
 
-        </activity>
-        <activity android:name=".RingAct"></activity>
-        <activity android:name=".CameraAlbumAct">
-
-        </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.newlife.fileprovider"
@@ -97,11 +88,18 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
-        <activity android:name=".WebViewAct">
+
+        <activity android:name=".WebViewAct"></activity>
+        <activity android:name=".NetworkActivity"></activity>
+        <activity android:name=".ThreadTestAct">
         </activity>
-        <activity android:name=".NetworkActivity">
+        <service android:name="com.example.service.MyService"
+            android:exported="true"
+            android:enabled="true">
+        </service>
+        <activity android:name=".ServiceTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

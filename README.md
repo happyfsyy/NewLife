@@ -27,3 +27,8 @@
 * MyContentProvider创建了一个内容提供器，可供外界程序访问。
 * NotificationAct实现了基本的Notification。
 * ReceiveDataAct接收了从DataBaseAct传输过来的数据，测试了Serializable和Parcelable方式。
+* AlarmAct实现超简易的闹钟功能，其实只是试验了下Alarm机制。
+* CameraAlbumAct实现了拍照和从手机选取照片的功能。
+* WebViewAct实现简易的WebView功能。
+* NetWorkActivity实现了用HttpURLConnection和OKHttp发送请求，用Pull和SAX解析XML，以及用JSONObject和GSON解析json。
+
