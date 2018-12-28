@@ -10,4 +10,16 @@
         android:id="@+id/service_stop_button"
         android:text="Stop Service"
         style="@style/ButtonStyle"/>
+    <Button
+        android:id="@+id/service_bind_button"
+        android:text="Bind Service"
+        style="@style/ButtonStyle"/>
+    <Button
+        android:id="@+id/service_unbind_button"
+        android:text="Unbind Service"
+        style="@style/ButtonStyle"/>
+    <Button
+        android:id="@+id/service_start_intent_button"
+        android:text="Start Intent Service"
+        style="@style/ButtonStyle"/>
 </LinearLayout>
