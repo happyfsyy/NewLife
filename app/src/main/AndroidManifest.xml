@@ -100,12 +100,18 @@
             android:enabled="true">
         </service>
         <activity android:name=".ServiceTestAct">
+
+        </activity>
+        <service android:name="com.example.service.MyIntentService"/>
+        <activity android:name=".DownloadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.example.service.MyIntentService"/>
+        <service android:name="com.example.service.DownloadService"
+            android:exported="true"
+            android:enabled="true"/>
     </application>
 
 </manifest>

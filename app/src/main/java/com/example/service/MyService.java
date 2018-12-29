@@ -48,10 +48,11 @@ public class MyService extends Service{
         PendingIntent pendingIntent=PendingIntent.getActivity(this,REQUEST_HELLO,intent,0);
 
 
+        NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
         if(Build.VERSION.SDK_INT>=26){
             NotificationChannel notificationChannel=new NotificationChannel("123","1234",NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-            manager.createNotificationChannel(notificationChannel);
+//            manager.createNotificationChannel(notificationChannel);
         }
         Notification notification=new NotificationCompat.Builder(this,"123")
                 .setContentText("hello")
@@ -61,8 +62,8 @@ public class MyService extends Service{
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .build();
-//            manager.notify(REQUEST_HELLO,notification);
-        startForeground(REQUEST_HELLO,notification);
+            manager.notify(REQUEST_HELLO,notification);
+//        startForeground(REQUEST_HELLO,notification);
 
     }
 
@@ -76,12 +77,12 @@ public class MyService extends Service{
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         LogUtils.e(TAG,"onStartCommand()");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                stopSelf();
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                stopSelf();
+//            }
+//        }).start();
         return super.onStartCommand(intent, flags, startId);
     }
 
