@@ -2,8 +2,11 @@ package com.example.newlife;
 
 import android.Manifest;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.listener.ProgressListener;
 import com.example.service.DownloadService;
 import com.example.utils.LogUtils;
 
@@ -29,6 +33,7 @@ public class DownloadActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView progressText;
     private DownloadService.DownloadBinder binder;
+    private DownloadReceiver receiver;
     private static final String TAG = "DownloadActivity";
 
     public static final int WRITE_EXTERNAL=1;
@@ -38,6 +43,14 @@ public class DownloadActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
             LogUtils.e(TAG,"onServiceConnected");
             binder=(DownloadService.DownloadBinder)service;
+            //activity和service通信的第一种方法，加入listener，这样的话，就能从service回传进度给activity
+            binder.setListener(new ProgressListener() {
+                @Override
+                public void onProgress(int progress) {
+//                    progressBar.setProgress(progress);
+//                    progressText.setText(progress+"%");
+                }
+            });
         }
 
         @Override
@@ -58,10 +71,15 @@ public class DownloadActivity extends AppCompatActivity {
         Button pause=findViewById(R.id.pause_download);
         Button cancel=findViewById(R.id.cancel_download);
 
+
         Intent intent=new Intent(DownloadActivity.this,DownloadService.class);
         startService(intent);
         bindService(intent,connection,Service.BIND_AUTO_CREATE);
 
+        receiver=new DownloadReceiver();
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction("com.example.newlife.download");
+        registerReceiver(receiver,intentFilter);
 
         if(ContextCompat.checkSelfPermission(DownloadActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 !=PackageManager.PERMISSION_GRANTED){
@@ -109,6 +127,18 @@ public class DownloadActivity extends AppCompatActivity {
                 break;
             default:
                 break;
+        }
+    }
+
+    /**
+     * service和Activity通信的第二种方法，发送广播
+     */
+    class DownloadReceiver extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int progress=intent.getIntExtra("progress",0);
+            progressBar.setProgress(progress);
+            progressText.setText(progress+"%");
         }
     }
 }

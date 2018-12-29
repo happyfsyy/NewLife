@@ -15,6 +15,7 @@ import android.os.IBinder;
 import android.widget.Toast;
 
 import com.example.listener.DownloadListener;
+import com.example.listener.ProgressListener;
 import com.example.newlife.DownloadActivity;
 import com.example.newlife.DownloadTask;
 import com.example.newlife.R;
@@ -31,6 +32,7 @@ public class DownloadService extends Service {
     private DownloadTask downloadTask;
     private static final String TAG = "DownloadService";
     private String downloadUrl;
+    private ProgressListener progressListener;
 
 
     @Override
@@ -49,6 +51,8 @@ public class DownloadService extends Service {
                 getNotificationManger().notify(DownloadTask.TYPE_SUCCESS,getNotification("success",-1));
 
                 Toast.makeText(DownloadService.this,"success",Toast.LENGTH_SHORT).show();
+
+                stopSelf();
             }
 
             @Override
@@ -69,6 +73,10 @@ public class DownloadService extends Service {
                     getNotificationManger().createNotificationChannel(getNotificationChannel());
                 }
                 getNotificationManger().notify(DownloadTask.TYPE_PROGRESS,getNotification("Downloading...",progress));
+//                progressListener.onProgress(progress);
+                Intent intent=new Intent("com.example.newlife.download");
+                intent.putExtra("progress",progress);
+                sendBroadcast(intent);
             }
 
             @Override
@@ -131,6 +139,10 @@ public class DownloadService extends Service {
             if(downloadTask!=null){
                 downloadTask.pauseDownload();
             }
+        }
+
+        public void setListener(ProgressListener listener){
+            progressListener=listener;
         }
     }
 
