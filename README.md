@@ -31,4 +31,10 @@
 * CameraAlbumAct实现了拍照和从手机选取照片的功能。
 * WebViewAct实现简易的WebView功能。
 * NetWorkActivity实现了用HttpURLConnection和OKHttp发送请求，用Pull和SAX解析XML，以及用JSONObject和GSON解析json。
+* ThreadTestAct测试了Handler和Message的发送消息机制。
+* ServiceTestAct测试了启动服务，绑定服务等功能。
+* DownloadActivity采用了AsyncTask和Service，实现了一个完整的下载功能。
+* MaterialDesignAct测试了DesignSupport库中的一些控件。
+
+
 
