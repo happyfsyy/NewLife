@@ -70,6 +70,8 @@ public class UiActivity extends BaseActivity {
                     }
                 });
                 builder.show();
+
+                ProgressDialog dialog=new ProgressDialog(UiActivity.this);
             }
         });
     }

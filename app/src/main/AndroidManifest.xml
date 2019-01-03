@@ -65,9 +65,9 @@
         <activity android:name=".ForceOffLineAct" />
         <activity android:name=".FileWriteReadAct" />
         <activity android:name=".PrefSaveRestoreAct" />
-        <activity android:name=".DataBaseAct"></activity>
+        <activity android:name=".DataBaseAct" />
         <activity android:name=".RuntimePermissionAct" />
-        <activity android:name=".ReadContactsAct"></activity>
+        <activity android:name=".ReadContactsAct" />
 
         <provider
             android:name=".MyContentProvider"
@@ -75,11 +75,11 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".NotificationAct"></activity>
-        <activity android:name=".ReceiveDataAct"></activity>
-        <activity android:name=".AlarmAct"></activity>
+        <activity android:name=".NotificationAct" />
+        <activity android:name=".ReceiveDataAct" />
+        <activity android:name=".AlarmAct" />
         <activity android:name=".RingAct" />
-        <activity android:name=".CameraAlbumAct"></activity>
+        <activity android:name=".CameraAlbumAct" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -91,34 +91,38 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".WebViewAct"></activity>
-        <activity android:name=".NetworkActivity"></activity>
-        <activity android:name=".ThreadTestAct">
-        </activity>
-        <service android:name="com.example.service.MyService"
-            android:exported="true"
-            android:enabled="true">
-        </service>
-        <activity android:name=".ServiceTestAct">
+        <activity android:name=".WebViewAct" />
+        <activity android:name=".NetworkActivity" />
+        <activity android:name=".ThreadTestAct"></activity>
 
-        </activity>
-        <service android:name="com.example.service.MyIntentService"/>
-        <activity android:name=".DownloadActivity">
+        <service
+            android:name="com.example.service.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
 
-        </activity>
-        <service android:name="com.example.service.DownloadService"
-            android:exported="true"
-            android:enabled="true"/>
-        <activity android:name=".MaterialDesignAct"
+        <activity android:name=".ServiceTestAct"></activity>
+
+        <service android:name="com.example.service.MyIntentService" />
+
+        <activity android:name=".DownloadActivity"></activity>
+
+        <service
+            android:name="com.example.service.DownloadService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".MaterialDesignAct"
             android:label="@string/toolbar_label">
+        </activity>
+        <activity
+            android:name=".FruitActivity"
+            android:theme="@style/FruitActivityTheme"></activity>
+        <activity android:name=".DispatchAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".FruitActivity"
-            android:theme="@style/FruitActivityTheme">
-
         </activity>
     </application>
 

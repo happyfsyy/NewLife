@@ -58,7 +58,7 @@ public class MaterialDesignAct extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
         //将Call这个Item设置为默认选中。
-//        navigationView.setCheckedItem(R.id.nav_call);
+        navigationView.setCheckedItem(R.id.nav_call);
         //设置菜单项选中事件的监听器。
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

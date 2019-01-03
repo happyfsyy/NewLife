@@ -35,6 +35,6 @@
 * ServiceTestAct测试了启动服务，绑定服务等功能。
 * DownloadActivity采用了AsyncTask和Service，实现了一个完整的下载功能。
 * MaterialDesignAct测试了DesignSupport库中的一些控件。
-
-
+* FruitActivity利用CoordinatorLayout,AppBarLayout,CollapsingToolbarLayout,NestedScrollView实现的一个详情界面。
+* DispatchAct测试了事件分发机制的流程。
 
