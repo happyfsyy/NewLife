@@ -93,18 +93,18 @@
 
         <activity android:name=".WebViewAct" />
         <activity android:name=".NetworkActivity" />
-        <activity android:name=".ThreadTestAct"></activity>
+        <activity android:name=".ThreadTestAct" />
 
         <service
             android:name="com.example.service.MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
-        <activity android:name=".ServiceTestAct"></activity>
+        <activity android:name=".ServiceTestAct" />
 
         <service android:name="com.example.service.MyIntentService" />
 
-        <activity android:name=".DownloadActivity"></activity>
+        <activity android:name=".DownloadActivity" />
 
         <service
             android:name="com.example.service.DownloadService"
@@ -113,12 +113,13 @@
 
         <activity
             android:name=".MaterialDesignAct"
-            android:label="@string/toolbar_label">
-        </activity>
+            android:label="@string/toolbar_label"></activity>
         <activity
             android:name=".FruitActivity"
-            android:theme="@style/FruitActivityTheme"></activity>
+            android:theme="@style/FruitActivityTheme" />
         <activity android:name=".DispatchAct">
+        </activity>
+        <activity android:name=".DrawableAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

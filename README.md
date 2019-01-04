@@ -13,8 +13,6 @@
 * BaseAdapter封装了一个简单的RecyclerView.Adapter的实现。
 * FragmentTestActivity测试了Fragment和Activity之间交互时候的生命周期。
 * NewsActivity是一个简易版本的新闻应用，兼顾手机和平板。  
-![phone](https://raw.githubusercontent.com/happyfsyy/NewLife/master/app/img_folder/img1.png)
-![tablet](https://raw.githubusercontent.com/happyfsyy/NewLife/master/app/img_folder/img2.PNG)
 * CycleViewPagerAct实现循环滑动ViewPager。
 * ViewPagerFragAct实现基本的ViewPager+Fragment。
 * SendBroadcastAct发送自定义广播。
@@ -37,4 +35,5 @@
 * MaterialDesignAct测试了DesignSupport库中的一些控件。
 * FruitActivity利用CoordinatorLayout,AppBarLayout,CollapsingToolbarLayout,NestedScrollView实现的一个详情界面。
 * DispatchAct测试了事件分发机制的流程。
+* DrawableAct测试各种drawable资源。
 
