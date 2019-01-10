@@ -7,6 +7,9 @@ import android.content.Context;
  *
  */
 public class DisplayUtil {
+    private DisplayUtil(){
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }
 
     /**
      * 将px值转化为dp值

@@ -68,7 +68,9 @@ public class DrawableAct extends AppCompatActivity {
         LogUtils.e(TAG,"widthPixels: "+widthPixels);
 
 
-        int a=DisplayUtil.px2dp(this,1);
+        ImageView button9=findViewById(R.id.button9);
+        Drawable drawable1=button9.getDrawable();
+        drawable1.setLevel(drawable1.getLevel()+4000);
     }
 
     private void rToDrawable(){

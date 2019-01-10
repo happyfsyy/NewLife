@@ -120,6 +120,9 @@
         <activity android:name=".DispatchAct">
         </activity>
         <activity android:name=".DrawableAct">
+
+        </activity>
+        <activity android:name="com.example.mvp.UserLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
