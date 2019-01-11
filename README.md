@@ -36,4 +36,5 @@
 * FruitActivity利用CoordinatorLayout,AppBarLayout,CollapsingToolbarLayout,NestedScrollView实现的一个详情界面。
 * DispatchAct测试了事件分发机制的流程。
 * DrawableAct测试各种drawable资源。
-
+* UserLoginActivity测试MVP。
+* HttpUrlConAct测试HTTPURLConnection。
