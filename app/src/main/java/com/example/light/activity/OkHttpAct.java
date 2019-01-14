@@ -32,6 +32,7 @@ import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -227,12 +228,19 @@ public class OkHttpAct extends AppCompatActivity implements View.OnClickListener
     }
 
     private void sendMultiPart(){
-        MediaType type_png=MediaType.parse("image/png");
+        MediaType mediaType=MediaType.parse("image/png");
+        String path="/sdcard/xxxxxxxxx.jpg";
+        File file=new File(path);
+
         RequestBody requestBody=new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("title","ale")
-                .addFormDataPart("image","ale.jpg",RequestBody.create(type_png,new File("/sdcard/ale.jpg")))
+                .addFormDataPart("img",file.getName(),RequestBody.create(mediaType,file))
                 .build();
+
+
+
+
         Request request=new Request.Builder()
                 .url("https://api.imgur.com/3/image")
                 .post(requestBody)
