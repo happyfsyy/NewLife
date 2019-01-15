@@ -2,16 +2,24 @@ package com.example.utils;
 
 import android.accounts.NetworkErrorException;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.widget.ImageView;
 
 import com.example.newlife.MyApplication;
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.FileNameMap;
@@ -176,6 +184,129 @@ public class OkHttpClientManager {
         deliverResult(resultCallback,request);
     }
 
+    /**
+     * 异步下载文件
+     * @param url
+     * @param desFileDir
+     * @param resultCallback
+     */
+    private void _downloadAsync(final String url, final String desFileDir, final ResultCallback resultCallback){
+        final Request request=new Request.Builder().url(url).build();
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                sendFailedResultCallback(request,e,resultCallback);
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                InputStream inputStream=null;
+                FileOutputStream fileOutputStream=null;
+                byte[] buffer;
+                int num;
+                try{
+                    //获取输入流
+                    inputStream=response.body().byteStream();
+                    //创建目标文件
+                    String fileName=getFileName(url);
+                    File file=new File(desFileDir,fileName);
+                    //将输入流读入缓存中
+                    buffer=new byte[2048];
+                    //将缓存写入目标文件中
+                    fileOutputStream=new FileOutputStream(file);
+                    //-1是文件终止标志
+                    while((num=inputStream.read(buffer))!=-1){
+                        fileOutputStream.write(buffer,0,num);
+                    }
+                    fileOutputStream.flush();
+                    String desFilePath=file.getAbsolutePath();
+                    sendSuccessResultCallback(desFilePath,resultCallback);
+                }catch (IOException e){
+                    sendFailedResultCallback(request,e,resultCallback);
+                }finally {
+                    try{
+                        if(inputStream!=null){
+                            inputStream.close();
+                        }
+                        if(fileOutputStream!=null){
+                            fileOutputStream.close();
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    private void showImage(String url, final ImageView imageView, final int errorResId){
+        final Request request=new Request.Builder().url(url).build();
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                setErrorResId(imageView,errorResId);
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                InputStream inputStream=null;
+                try{
+                   //获取输入流
+                   inputStream=response.body().byteStream();
+                   //根据输入流，获取图片的宽和高
+                   BitmapFactory.Options options=new BitmapFactory.Options();
+                   options.inJustDecodeBounds=true;
+                   BitmapFactory.decodeStream(inputStream,null,options);
+                   //获取inSampleSize
+                   options.inSampleSize=calculateInSampleSize(options,imageView);
+                   //获取bitmap
+                   options.inJustDecodeBounds=false;
+                   final Bitmap bitmap=BitmapFactory.decodeStream(inputStream,null,options);
+                   mHandler.post(new Runnable() {
+                       @Override
+                       public void run() {
+                           imageView.setImageBitmap(bitmap);
+                       }
+                   });
+                }catch (Exception e){
+                    setErrorResId(imageView,errorResId);
+                }finally {
+                    try{
+                        if(inputStream!=null){
+                            inputStream.close();
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    private int calculateInSampleSize(BitmapFactory.Options options,ImageView imageView){
+        int srcWidth=options.outWidth;
+        int srcHeight=options.outHeight;
+        int desWidth=imageView.getWidth();
+        int desHeight=imageView.getHeight();
+        int inSampleSize=1;
+        //这是采用二分法，inSampleSize都是二的倍数，而且是最大的
+        if(srcWidth>desWidth||srcHeight>desHeight){
+            int halfWidth=srcWidth/2;
+            int halfHeight=srcHeight/2;
+            while(halfWidth/inSampleSize>=desWidth&&
+                    halfHeight/inSampleSize>=desHeight){
+                inSampleSize*=2;
+            }
+        }
+
+        if(srcWidth>desWidth||srcHeight>desHeight){
+            //math.round应该就是等于(int)(a+0.5)
+            int widthRatio=Math.round((float)srcWidth/desWidth);
+            int heightRatio=Math.round((float)srcHeight/desHeight);
+            //按照小的倍数进行缩小，当然也可以采用大的倍数进行缩小
+            inSampleSize=Math.min(widthRatio,heightRatio);
+        }
+        return inSampleSize;
+    }
+
 
 
     //**************对外公布的方法**************
@@ -309,7 +440,24 @@ public class OkHttpClientManager {
         if(params==null) return new Param[0];
         else return params;
     }
+    private void setErrorResId(final ImageView imageView, final int errorResId){
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                imageView.setImageResource(errorResId);
+            }
+        });
+    }
 
+    /**
+     * 根据url获取文件名
+     * @param url
+     * @return
+     */
+    private String getFileName(String url){
+        int lastIndex=url.lastIndexOf("/");
+        return lastIndex<0?url:url.substring(lastIndex+1,url.length());
+    }
     private Request buildPostRequest(String url,Param[] params){
         params=validateParam(params);
 
@@ -321,7 +469,6 @@ public class OkHttpClientManager {
         return new Request.Builder().url(url).post(requestBody).build();
 
     }
-
     public static abstract class ResultCallback<T>{
         Type mType;
         public ResultCallback(){
