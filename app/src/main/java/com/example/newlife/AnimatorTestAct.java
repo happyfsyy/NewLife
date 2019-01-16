@@ -2,6 +2,7 @@ package com.example.newlife;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -99,6 +100,41 @@ public class AnimatorTestAct extends AppCompatActivity {
         Animator animator=AnimatorInflater.loadAnimator(this,R.animator.combination);
         animator.setTarget(combination);
         animator.start();
+    }
+
+    private void addListener(Animator animator){
+        animator.addListener(new Animator.AnimatorListener() {
+            /**
+             * 动画开始的时候调用
+             */
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+            /**
+             * 动画结束的时候调用
+             */
+            @Override
+            public void onAnimationEnd(Animator animation) {
+            }
+            /**
+             * 动画被取消的时候调用
+             */
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+            /**
+             * 动画重复执行的时候调用
+             */
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+        });
     }
 
 }
