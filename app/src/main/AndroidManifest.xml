@@ -129,6 +129,17 @@
 
         </activity>
         <activity android:name="com.example.light.activity.OkHttpAct">
+
+        </activity>
+        <activity android:name=".TransitionStartAct"
+            android:theme="@style/AnimAppTheme">
+
+        </activity>
+        <activity android:name=".TransitionEndAct"/>
+        <activity android:name="com.example.light.activity.SlideViewTestAct">
+
+        </activity>
+        <activity android:name=".AnimatorTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

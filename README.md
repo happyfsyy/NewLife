@@ -1,5 +1,5 @@
 # 新生
-眼看千遍，不如手敲一遍。好久没敲代码，手都开始生疏了。其中一部分代码来自郭神的第一行代码，最开始我就是看这本书复习的。
+眼看千遍，不如手敲一遍。好久没敲代码，手都开始生疏了。其中一部分代码来自第一行代码、Android群英传以及Android进阶之光，最开始我就是看这三本书复习的。
 # 文件介绍
 * MainActivity主要测试Activity的生命周期，Intent的用法，Menu的使用，onSaveInstanceState()方法的使用。
 * SecondActivity测试startActivityForResult()，以及启动Activity的新写法startAct()。
@@ -38,3 +38,7 @@
 * DrawableAct测试各种drawable资源。
 * UserLoginActivity测试MVP。
 * HttpUrlConAct测试HTTPURLConnection。
+* OkHttpAct测试okHttp的基本功能。
+* OkHttpClientManger实现了对各种功能的简单封装。
+* TransitionStartAct测试Activity切换时的动画效果。
+
