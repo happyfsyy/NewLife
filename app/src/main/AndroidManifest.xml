@@ -113,33 +113,24 @@
 
         <activity
             android:name=".MaterialDesignAct"
-            android:label="@string/toolbar_label"></activity>
+            android:label="@string/toolbar_label" />
         <activity
             android:name=".FruitActivity"
             android:theme="@style/FruitActivityTheme" />
-        <activity android:name=".DispatchAct">
-        </activity>
-        <activity android:name=".DrawableAct">
-
-        </activity>
-        <activity android:name="com.example.mvp.UserLoginActivity">
-
-        </activity>
-        <activity android:name="com.example.light.activity.HttpUrlConAct">
-
-        </activity>
-        <activity android:name="com.example.light.activity.OkHttpAct">
-
-        </activity>
-        <activity android:name=".TransitionStartAct"
-            android:theme="@style/AnimAppTheme">
-
-        </activity>
-        <activity android:name=".TransitionEndAct"/>
+        <activity android:name=".DispatchAct"></activity>
+        <activity android:name=".DrawableAct"></activity>
+        <activity android:name="com.example.mvp.UserLoginActivity"></activity>
+        <activity android:name="com.example.light.activity.HttpUrlConAct"></activity>
+        <activity android:name="com.example.light.activity.OkHttpAct"></activity>
+        <activity
+            android:name=".TransitionStartAct"
+            android:theme="@style/AnimAppTheme"></activity>
+        <activity android:name=".TransitionEndAct" />
         <activity android:name="com.example.light.activity.SlideViewTestAct">
 
         </activity>
-        <activity android:name=".AnimatorTestAct">
+        <activity android:name=".AnimatorTestAct"></activity>
+        <activity android:name=".ScrollTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

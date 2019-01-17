@@ -18,6 +18,7 @@ public class SlideViewTestAct extends AppCompatActivity {
         CustomView view=findViewById(R.id.custom_view);
 //        view.startAnimation(AnimationUtils.loadAnimation(this,R.anim.translate));
 //        ObjectAnimator.ofFloat(view,"translationX",0,300).setDuration(1000).start();
-        view.smoothScrollTo(-400,0);
+//        view.smoothScrollTo(-400,0);
+
     }
 }

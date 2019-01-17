@@ -23,6 +23,11 @@ public class CustomView extends View {
     private float newY;
     private Scroller mScroller;
 
+    private float lastRawX;
+    private float lastRawY;
+    private float newRawX;
+    private float newRawY;
+
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mScroller=new Scroller(context);
@@ -31,13 +36,13 @@ public class CustomView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.e(TAG,"onMeasure()");
+//        Log.e(TAG,"onMeasure()");
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        Log.e(TAG,"onLayout()");
+//        Log.e(TAG,"onLayout()");
     }
 
     @Override
@@ -46,13 +51,21 @@ public class CustomView extends View {
             case MotionEvent.ACTION_DOWN:
                 lastX=event.getX();
                 lastY=event.getY();
+
+                lastRawX=event.getRawX();
+                lastRawY=event.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
                 newX=event.getX();
                 newY=event.getY();
+                newRawX=event.getRawX();
+                newRawY=event.getRawY();
+                int offsetRawX=(int)(newRawX-lastRawX);
                 int offsetX=(int)(newX-lastX);
                 int offsetY=(int)(newY-lastY);
                 //layout的方式使得view滑动
+                Log.e(TAG,"getLeft(): "+getLeft()+"\tlastX: "+lastX+"\tnewX: "+newX+"\toffsetX: "+offsetX+
+                        "\tlastRawX: "+lastRawX+"\tnewRawX: "+newRawX+"\toffsetRawX: "+offsetRawX);
 //                layout(getLeft()+offsetX,getTop()+offsetY,
 //                        getRight()+offsetX,getBottom()+offsetY);
                 //offset()方法使得view滑动
@@ -65,8 +78,14 @@ public class CustomView extends View {
 //                setLayoutParams(params);
                 //使用scrollBy
                 ((View)getParent()).scrollBy(-offsetX,-offsetY);
+//                scrollBy(offsetX,offsetY);
                 break;
             case MotionEvent.ACTION_UP:
+                Log.e(TAG,"ACTION_UP");
+                View viewGroup=((View)getParent());
+                mScroller.startScroll(viewGroup.getScrollX(),viewGroup.getScrollY(),
+                        -viewGroup.getScrollX(),-viewGroup.getScrollY());
+                invalidate();
                 break;
         }
         return true;
@@ -74,13 +93,14 @@ public class CustomView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Log.e(TAG,"onDraw()");
+//        Log.e(TAG,"onDraw()");
         super.onDraw(canvas);
     }
 
     @Override
     public void computeScroll() {
         super.computeScroll();
+        Log.e(TAG,"computeScroll()");
         if(mScroller.computeScrollOffset()){
             ((View)getParent()).scrollTo(mScroller.getCurrX(),mScroller.getCurrY());
             invalidate();

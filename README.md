@@ -41,4 +41,7 @@
 * OkHttpAct测试okHttp的基本功能。
 * OkHttpClientManger实现了对各种功能的简单封装。
 * TransitionStartAct测试Activity切换时的动画效果。
+* SlideViewTestAct测试滑动的几种方式，包括layout，offset，LayoutParams。
+* AnimatorTest测试属性动画。
+* ScrollerTestAct测试scrollBy，scrollTo，Scroller。
 
