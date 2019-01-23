@@ -8,7 +8,7 @@
     <Button
         android:id="@+id/padding_test_button1"
         style="@style/ButtonStyle"
-        android:text="减paddingTop"
+        android:text="减paddingBottom"
         android:layout_marginBottom="20dp"/>
     <Button
         android:id="@+id/padding_test_button2"

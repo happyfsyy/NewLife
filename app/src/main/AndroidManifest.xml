@@ -134,6 +134,9 @@
 
         </activity>
         <activity android:name=".PaddingTestAct">
+
+        </activity>
+        <activity android:name=".HeaderViewHeightTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
