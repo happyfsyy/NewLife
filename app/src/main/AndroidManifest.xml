@@ -131,6 +131,9 @@
         </activity>
         <activity android:name=".AnimatorTestAct"></activity>
         <activity android:name=".ScrollTestAct">
+
+        </activity>
+        <activity android:name=".PaddingTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

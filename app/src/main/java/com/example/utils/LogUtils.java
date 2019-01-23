@@ -14,6 +14,7 @@ public class LogUtils {
     public static final int ERROR=5;
     public static final int NOTHING=6;
     public static int level=VERBOSE;
+    private static final String TAG = "LogUtils";
 
     public static void v(String tag,String msg){
         if(level<=VERBOSE){
@@ -38,6 +39,11 @@ public class LogUtils {
     public static void e(String tag,String msg){
         if(level<=ERROR){
             Log.e(tag,">>>>>>>>>"+msg);
+        }
+    }
+    public static void e(String msg){
+        if(level<=ERROR) {
+            Log.e(TAG,msg);
         }
     }
 }

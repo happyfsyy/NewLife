@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="50dp"
+    android:background="#55f0f00f">
+
+    <Button
+        android:id="@+id/padding_test_button1"
+        style="@style/ButtonStyle"
+        android:text="减paddingTop"
+        android:layout_marginBottom="20dp"/>
+    <Button
+        android:id="@+id/padding_test_button2"
+        style="@style/ButtonStyle"
+        android:text="加paddingTop"
+        android:layout_marginBottom="0dp"/>
+
+    <TextView
+        android:id="@+id/padding_test_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我是个好人"
+        android:textSize="20sp"
+        android:background="#33ff00ff"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="看它会不会跟着上面的View移动"
+        android:textSize="20sp"
+        android:background="#ff00ff"/>
+</LinearLayout>
