@@ -16,8 +16,5 @@ import android.app.AlertDialog;
  * 在工厂模式中，如果我们想要生产苹果计算机，无须修改工厂类，直接创建产品即可。
  */
 public class Description {
-    private Description(){
-        AlertDialog dialog=new AlertDialog.Builder(null)
-                .setTitle("").create();
-    }
+
 }
