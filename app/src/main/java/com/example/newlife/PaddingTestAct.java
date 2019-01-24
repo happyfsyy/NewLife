@@ -25,10 +25,14 @@ public class PaddingTestAct extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int paddingBottom=textView.getPaddingBottom();
-                textView.setPadding(0,0,0,paddingBottom-10);
-                LogUtils.e("paddingBottom: "+textView.getPaddingBottom());
-
+//                int paddingBottom=textView.getPaddingBottom();
+//                textView.setPadding(0,0,0,paddingBottom-10);
+//                LogUtils.e("paddingBottom: "+textView.getPaddingBottom());
+                int paddingTop=textView.getPaddingTop();
+                LogUtils.e("height: "+textView.getHeight());
+                textView.setPadding(0,paddingTop-10,0,0);
+                LogUtils.e("height: "+textView.getHeight());
+                LogUtils.e("paddingTop: "+textView.getPaddingTop());
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
