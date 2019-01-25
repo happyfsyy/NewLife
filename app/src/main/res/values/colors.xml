@@ -7,4 +7,5 @@
     <color name="header_bg">#404040</color>
     <color name="normal_color">#ffffff</color>
     <color name="selected_color">#D81B60</color>
+    <color name="pink">#33ff00ff</color>
 </resources>

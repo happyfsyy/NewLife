@@ -127,19 +127,20 @@
             android:theme="@style/AnimAppTheme"></activity>
         <activity android:name=".TransitionEndAct" />
         <activity android:name="com.example.light.activity.SlideViewTestAct">
-
         </activity>
-        <activity android:name=".AnimatorTestAct"></activity>
-        <activity android:name=".ScrollTestAct">
-
-        </activity>
-        <activity android:name=".PaddingTestAct">
+        <activity android:name=".AnimatorTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ScrollTestAct">
+        </activity>
+        <activity android:name=".PaddingTestAct">
+        </activity>
         <activity android:name=".HeaderViewHeightTestAct">
+        </activity>
+        <activity android:name=".ValueAnimatorAdvancedAct">
 
         </activity>
     </application>

@@ -36,6 +36,11 @@
             android:text="组合动画"
             style="@style/AnimatorTextItem"
             android:layout_marginLeft="50dp"/>
+        <TextView
+            android:id="@+id/animator_test_view_property"
+            android:text="使用ViewProperty的Text"
+            style="@style/AnimatorTextItem"
+            android:layout_marginLeft="50dp"/>
     </LinearLayout>
 
 </ScrollView>
