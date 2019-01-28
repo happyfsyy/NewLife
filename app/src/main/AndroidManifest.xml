@@ -27,7 +27,6 @@
         <!-- <action android:name="com.example.newlife.MY_BROADCAST"/> -->
         <!-- </intent-filter> -->
         <!-- </receiver> -->
-
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity">
             <intent-filter>
@@ -57,7 +56,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <activity android:name=".SendBroadcastAct" />
         <activity
             android:name=".BroadcastLoginActivity"
@@ -68,7 +66,6 @@
         <activity android:name=".DataBaseAct" />
         <activity android:name=".RuntimePermissionAct" />
         <activity android:name=".ReadContactsAct" />
-
         <provider
             android:name=".MyContentProvider"
             android:authorities="com.example.newlife.provider"
@@ -80,7 +77,6 @@
         <activity android:name=".AlarmAct" />
         <activity android:name=".RingAct" />
         <activity android:name=".CameraAlbumAct" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.newlife.fileprovider"
@@ -94,26 +90,21 @@
         <activity android:name=".WebViewAct" />
         <activity android:name=".NetworkActivity" />
         <activity android:name=".ThreadTestAct" />
-
         <service
             android:name="com.example.service.MyService"
             android:enabled="true"
             android:exported="true" />
-
         <activity android:name=".ServiceTestAct" />
-
         <service android:name="com.example.service.MyIntentService" />
-
         <activity android:name=".DownloadActivity" />
-
         <service
             android:name="com.example.service.DownloadService"
             android:enabled="true"
             android:exported="true" />
-
         <activity
             android:name=".MaterialDesignAct"
-            android:label="@string/toolbar_label" />
+            android:label="@string/toolbar_label" >
+        </activity>
         <activity
             android:name=".FruitActivity"
             android:theme="@style/FruitActivityTheme" />
@@ -129,10 +120,6 @@
         <activity android:name="com.example.light.activity.SlideViewTestAct">
         </activity>
         <activity android:name=".AnimatorTestAct">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ScrollTestAct">
         </activity>
@@ -141,7 +128,15 @@
         <activity android:name=".HeaderViewHeightTestAct">
         </activity>
         <activity android:name=".ValueAnimatorAdvancedAct">
+        </activity>
+        <activity android:name=".DrawerLayoutTestAct">
 
+        </activity>
+        <activity android:name=".LoadBitmapTestAct">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
