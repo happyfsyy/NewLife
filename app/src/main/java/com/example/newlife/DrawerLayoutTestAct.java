@@ -3,6 +3,7 @@ package com.example.newlife;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.utils.LogUtils;
+import com.google.android.material.navigation.NavigationView;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -17,7 +19,9 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -28,17 +32,33 @@ public class DrawerLayoutTestAct extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ListView listView;
     private Button openRightButton;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_layout);
         listView = findViewById(R.id.drawer_layout_listview);
         drawerLayout=findViewById(R.id.drawer_layout);
-        openRightButton=findViewById(R.id.drawer_open_right_button);
+        navigationView=findViewById(R.id.drawer_layout_navigation_view);
+        navigationView.setCheckedItem(R.id.navigation_test_call);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+
+        toolbar=findViewById(R.id.drawer_layout_toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
 
         initListView();
-        initOpenRightButton();
-
+//        initOpenRightButton();
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED,GravityCompat.END);
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
@@ -47,15 +67,15 @@ public class DrawerLayoutTestAct extends AppCompatActivity {
                 int viewId=drawerView.getId();
                 float leftScale=0.7f+0.3f*slideOffset;
                 float rightScale=1-slideOffset*0.3f;
-                if(viewId==R.id.drawer_layout_left_fragment){
-                   drawerView.animate().scaleX(leftScale).scaleY(leftScale)
-                           .alpha(leftScale).setDuration(0);
-                   content.animate().scaleX(rightScale).scaleY(rightScale).
-                           translationX(drawerView.getWidth()*slideOffset).setDuration(0);
-                }else if(viewId==R.id.drawer_layout_right_fragment){
-                    content.animate().scaleX(rightScale).scaleY(rightScale).
-                            translationX(-drawerView.getWidth()*slideOffset).setDuration(0);
-                }
+//                if(viewId==R.id.drawer_layout_navigation_view){
+//                   drawerView.animate().scaleX(leftScale).scaleY(leftScale)
+//                           .alpha(leftScale).setDuration(0);
+//                   content.animate().scaleX(rightScale).scaleY(rightScale).
+//                           translationX(drawerView.getWidth()*slideOffset).setDuration(0);
+//                }else if(viewId==R.id.drawer_layout_right_fragment){
+//                    content.animate().scaleX(rightScale).scaleY(rightScale).
+//                            translationX(-drawerView.getWidth()*slideOffset).setDuration(0);
+//                }
             }
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
@@ -80,6 +100,7 @@ public class DrawerLayoutTestAct extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
     }
     private void initOpenRightButton(){
+//        openRightButton=findViewById(R.id.drawer_open_right_button);
         openRightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,5 +108,19 @@ public class DrawerLayoutTestAct extends AppCompatActivity {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED,GravityCompat.END);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }else{
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
