@@ -9,6 +9,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.utils.LogUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -34,6 +35,7 @@ public class DrawerLayoutTestAct extends AppCompatActivity {
     private Button openRightButton;
     private NavigationView navigationView;
     private Toolbar toolbar;
+    
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +54,32 @@ public class DrawerLayoutTestAct extends AppCompatActivity {
 
         toolbar=findViewById(R.id.drawer_layout_toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-
+//        ActionBar actionBar=getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        toolbar.setNavigationIcon(R.drawable.ic_menu);
+//        toolbar.setLogo(R.mipmap.ic_launcher);
+//        toolbar.setTitle("");
+//        toolbar.setSubtitle("副标题");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }else{
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+            }
+        });
+        
+        final Button message=findViewById(R.id.drawer_layout_toolbar_message);
+        message.setPressed(true);
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DrawerLayoutTestAct.this, "message come in", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         initListView();
 //        initOpenRightButton();
@@ -112,15 +136,7 @@ public class DrawerLayoutTestAct extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }else{
-                    drawerLayout.openDrawer(GravityCompat.START);
-                }
-                return true;
-        }
+
         return super.onOptionsItemSelected(item);
     }
 }
