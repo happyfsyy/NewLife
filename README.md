@@ -44,4 +44,11 @@
 * SlideViewTestAct测试滑动的几种方式，包括layout，offset，LayoutParams。
 * AnimatorTest测试属性动画。
 * ScrollerTestAct测试scrollBy，scrollTo，Scroller。
-
+* PaddingTestAct测试padding为负的情况。
+* HeaderViewHeightTestAct测试listview的headerView的height变化情况，因为会有convertView重用的情况。
+* ValueAnimatorAdvancedAct测试ValueAnimator和ObjectAnimator的高级用法，主要是自定义TypeEvaluator。
+* DrawerLayoutTestAct测试DrawerLayout的用法，使用和不使用NavigationView的情况，以及加入ToolBar的使用。
+* LoadBitmapTestAct测试图片从hdpi转入xxxhdpi图片像素会放大几倍，以及加载大图时候的压缩方案，BitmapFactory.Options以及LruCache。
+* ToolBarTestAct测试Toolbar的各种各样使用情况，加入其它按钮，加入menu，title居中等等。
+* NavigationViewTestAct测试NavigationView的用法，不用作DrawerLayout的内容时，同样可以使用。
+* CoordinatorLayoutTestAct测试CoordinatorLayout+AppBarLayout+RecyclerView的用法。

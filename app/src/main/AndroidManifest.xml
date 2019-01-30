@@ -140,7 +140,8 @@
         </activity>
         <activity android:name=".NavigationViewTestAct">
         </activity>
-        <activity android:name=".CoordinateLayoutTestAct">
+        <activity android:name=".CoordinatorLayoutTestAct"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
