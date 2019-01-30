@@ -131,19 +131,20 @@
         </activity>
         <activity android:name=".DrawerLayoutTestAct"
             android:theme="@style/NoActionBarTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".LoadBitmapTestAct">
         </activity>
         <activity android:name=".ToolbarTestAct"
-            android:theme="@style/NoActionBarTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="Test Toolbar">
         </activity>
         <activity android:name=".NavigationViewTestAct">
-
+        </activity>
+        <activity android:name=".CoordinateLayoutTestAct">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
