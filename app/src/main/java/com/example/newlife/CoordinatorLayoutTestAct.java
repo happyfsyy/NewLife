@@ -1,6 +1,7 @@
 package com.example.newlife;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,8 +101,10 @@ public class CoordinatorLayoutTestAct extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, dayList.get(holder.getLayoutPosition()).getDayText(),
-                            Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(CoordinatorLayoutTestAct.this,CoordinatorLayoutTest2Act.class);
+                    intent.putExtra("imgResId",dayList.get(holder.getLayoutPosition()).imgResId);
+                    intent.putExtra("name",dayList.get(holder.getLayoutPosition()).dayText);
+                    startActivity(intent);
                 }
             });
         }

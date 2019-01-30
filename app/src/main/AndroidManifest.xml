@@ -103,7 +103,8 @@
             android:exported="true" />
         <activity
             android:name=".MaterialDesignAct"
-            android:label="@string/toolbar_label" >
+            android:label="@string/toolbar_label"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".FruitActivity"
@@ -146,6 +147,9 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".CoordinatorLayoutTest2Act"
+            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
         </activity>
     </application>
 
