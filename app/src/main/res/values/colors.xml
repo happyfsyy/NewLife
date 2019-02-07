@@ -8,4 +8,5 @@
     <color name="normal_color">#ffffff</color>
     <color name="selected_color">#D81B60</color>
     <color name="pink">#33ff00ff</color>
+    <color name="orange_yellow">#FF9800</color>
 </resources>

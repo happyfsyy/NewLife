@@ -74,7 +74,13 @@
 
         <activity android:name=".NotificationAct" />
         <activity android:name=".ReceiveDataAct" />
-        <activity android:name=".AlarmAct" />
+        <activity android:name=".AlarmAct" >
+        </activity>
+        <receiver android:name="com.example.broadcast_receiver.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.example.newlife.ALARM"/>
+            </intent-filter>
+        </receiver>
         <activity android:name=".RingAct" />
         <activity android:name=".CameraAlbumAct" />
         <provider
@@ -143,13 +149,16 @@
         </activity>
         <activity android:name=".CoordinatorLayoutTestAct"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".CoordinatorLayoutTest2Act"
+            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
+        </activity>
+        <activity android:name=".CanvasTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".CoordinatorLayoutTest2Act"
-            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
         </activity>
     </application>
 
