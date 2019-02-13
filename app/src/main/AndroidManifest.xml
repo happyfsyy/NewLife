@@ -155,6 +155,9 @@
             android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
         </activity>
         <activity android:name=".CanvasTestAct">
+
+        </activity>
+        <activity android:name=".ClockViewAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
