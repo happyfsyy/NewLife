@@ -8,16 +8,12 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.graphics.Paint.FontMetrics;
-
-import com.example.utils.DisplayUtil;
-
 import androidx.annotation.Nullable;
 
 public class ClockView extends View {
     private Paint mPaint;
     public ClockView(Context context) {
-        super(context);
-        initParams();
+        this(context,null);
     }
     public ClockView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
