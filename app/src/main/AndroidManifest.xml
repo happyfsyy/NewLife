@@ -163,6 +163,8 @@
         <activity android:name=".PrimaryColorAct">
         </activity>
         <activity android:name=".ColorMatrixAct">
+        </activity>
+        <activity android:name=".PixelsEffectAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
