@@ -149,7 +149,6 @@
         </activity>
         <activity android:name=".CoordinatorLayoutTestAct"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity android:name=".CoordinatorLayoutTest2Act"
             android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
@@ -169,6 +168,10 @@
         <activity android:name=".ImageMatrixAct">
         </activity>
         <activity android:name=".FlagBitmapMeshAct">
+        </activity>
+        <activity android:name=".RoundRectTestAct">
+        </activity>
+        <activity android:name=".XferModeViewAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
