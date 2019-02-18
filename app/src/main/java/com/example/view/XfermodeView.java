@@ -35,7 +35,6 @@ public class XfermodeView extends View {
     private void initParams(Context context){
         mBgBitmap= BitmapFactory.decodeResource(context.getResources(), R.drawable.test);
         mPaint=new Paint();
-        //todo delete here try
         mPaint.setAlpha(0);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
