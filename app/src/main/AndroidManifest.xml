@@ -167,6 +167,8 @@
         <activity android:name=".PixelsEffectAct">
         </activity>
         <activity android:name=".ImageMatrixAct">
+        </activity>
+        <activity android:name=".FlagBitmapMeshAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
