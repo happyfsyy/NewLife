@@ -176,6 +176,8 @@
         <activity android:name=".ReflectViewAct">
         </activity>
         <activity android:name=".PathEffectAct">
+        </activity>
+        <activity android:name=".SurfaceViewAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
