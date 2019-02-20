@@ -178,6 +178,10 @@
         <activity android:name=".PathEffectAct">
         </activity>
         <activity android:name=".SurfaceViewAct">
+        </activity>
+        <activity android:name="com.example.light.activity.RxJavaTestAct">
+        </activity>
+        <activity android:name="com.example.light.activity.RetrofitTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
