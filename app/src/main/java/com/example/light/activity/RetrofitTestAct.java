@@ -1,13 +1,10 @@
 package com.example.light.activity;
 
 import android.os.Bundle;
-import android.widget.Toast;
-
 import com.example.newlife.R;
 import com.example.utils.LogUtils;
-
 import java.util.List;
-
+import java.util.Map;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
@@ -18,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public class RetrofitTestAct extends AppCompatActivity {
     @Override
@@ -49,9 +47,8 @@ public class RetrofitTestAct extends AppCompatActivity {
             }
         });
 
-
-
     }
+
     public interface AppService{
         @GET("get_data.json")
         Call<List<APP>> getAppMsg();
@@ -66,6 +63,8 @@ public class RetrofitTestAct extends AppCompatActivity {
          */
         @GET("get_data.json")
         Call<APP> getAppMsg(@Query("version") String version);
+        @GET("get_data.json")
+        Call<APP> getAppMsg(@QueryMap Map<String,String> options);
     }
     class APP{
         private String id;

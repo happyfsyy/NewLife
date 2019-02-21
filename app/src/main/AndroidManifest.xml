@@ -18,7 +18,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_sercurity_config">
 
         <!-- <receiver android:name="com.example.broadcast_receiver.MyBroadcastReceiver" -->
         <!-- android:enabled="true" -->
@@ -182,6 +183,8 @@
         <activity android:name="com.example.light.activity.RxJavaTestAct">
         </activity>
         <activity android:name="com.example.light.activity.RetrofitTestAct">
+        </activity>
+        <activity android:name="com.example.light.activity.RetrofitTestAct2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
