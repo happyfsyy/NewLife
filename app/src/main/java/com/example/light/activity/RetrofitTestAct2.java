@@ -7,9 +7,17 @@ import android.widget.Button;
 import com.example.bean.IpModel;
 import com.example.newlife.R;
 import com.example.utils.LogUtils;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +42,8 @@ public class RetrofitTestAct2 extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getIpInfo();
+//                getIpInfo();
+                getIpInfoOkHttp();
             }
         });
     }
@@ -57,8 +66,42 @@ public class RetrofitTestAct2 extends AppCompatActivity {
             }
         });
     }
+    private void getIpInfoOkHttp(){
+        OkHttpClient.Builder builder=new OkHttpClient.Builder()
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15,TimeUnit.SECONDS)
+                .connectTimeout(15,TimeUnit.SECONDS);
+        OkHttpClient client=builder.build();
+        RequestBody requestBody=new FormBody.Builder().add("ip","112.65.176.145").build();
+        final Request request=new Request.Builder()
+                .url("http://ip.taobao.com/service/getIpInfo.php")
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                e.printStackTrace();
+            }
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+                parseJsonWithGSON(response.body().string());
+//                LogUtils.e(response.body().string());
+            }
+        });
+    }
+
     public interface IpService{
         @GET("getIpInfo.php?ip=112.68.176.145")
         Call<IpModel> getIpMsg();
+    }
+
+    private void parseJsonWithGSON(String jsonData){
+        Gson gson=new Gson();
+        IpBean ipModel=gson.fromJson(jsonData,IpBean.class);
+        LogUtils.e("code",ipModel.code+"");
+    }
+    class IpBean{
+        int code;
+        String data;
     }
 }

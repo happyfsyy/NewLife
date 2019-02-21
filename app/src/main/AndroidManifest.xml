@@ -181,14 +181,14 @@
         <activity android:name=".SurfaceViewAct">
         </activity>
         <activity android:name="com.example.light.activity.RxJavaTestAct">
-        </activity>
-        <activity android:name="com.example.light.activity.RetrofitTestAct">
-        </activity>
-        <activity android:name="com.example.light.activity.RetrofitTestAct2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.example.light.activity.RetrofitTestAct">
+        </activity>
+        <activity android:name="com.example.light.activity.RetrofitTestAct2">
         </activity>
     </application>
 
