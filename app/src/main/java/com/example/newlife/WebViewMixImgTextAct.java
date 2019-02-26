@@ -1,8 +1,12 @@
 package com.example.newlife;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -48,5 +52,51 @@ public class WebViewMixImgTextAct extends AppCompatActivity {
         }
         String content=parse.toString();
         webView.loadDataWithBaseURL(null,content,"text/html","utf-8",null);
+        initListener();
+    }
+    private View.OnTouchListener onTouchListener=new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            float x=0,y=0;
+            switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    x=(int)event.getRawX();
+                    y=(int)event.getRawY();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    if((event.getEventTime()-event.getDownTime())<100){
+                        if(x-event.getX()<5&&y-event.getY()<5){
+                            WebView.HitTestResult hitTestResult=((WebView)v).getHitTestResult();
+                            if(hitTestResult.getType()==WebView.HitTestResult.IMAGE_TYPE
+                                ||hitTestResult.getType()==WebView.HitTestResult.IMAGE_ANCHOR_TYPE
+                                ||hitTestResult.getType()==WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE){
+                                Toast.makeText(WebViewMixImgTextAct.this, "保存这个图片"+hitTestResult.getExtra(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        }
+    };
+    private void initListener(){
+        webView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                WebView.HitTestResult hitTestResult=((WebView)v).getHitTestResult();
+                if(hitTestResult.getType()==WebView.HitTestResult.IMAGE_TYPE
+                    ||hitTestResult.getType()==WebView.HitTestResult.IMAGE_ANCHOR_TYPE
+                    ||hitTestResult.getType()==WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE){
+                    Toast.makeText(WebViewMixImgTextAct.this, "图片地址"+hitTestResult.getExtra(), Toast.LENGTH_SHORT).show();
+                    Uri uri=Uri.parse(hitTestResult.getExtra());
+                    Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+                    startActivity(intent);
+                }
+                return true;
+            }
+        });
+        webView.setOnTouchListener(onTouchListener);
     }
 }
