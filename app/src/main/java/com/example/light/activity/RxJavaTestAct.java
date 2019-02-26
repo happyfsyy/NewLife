@@ -63,6 +63,8 @@ public class RxJavaTestAct extends AppCompatActivity {
                                 LogUtils.e("After observeon(IO),Current Thread is"+Thread.currentThread().getName());
                             }
                         });
+                //todo
+//                integerObservable.subscribe()
             }
         });
 
@@ -96,5 +98,6 @@ public class RxJavaTestAct extends AppCompatActivity {
                 Log.e("observer","onComplete");
             }
         };
+
     }
 }

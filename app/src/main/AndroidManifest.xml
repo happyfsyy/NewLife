@@ -181,14 +181,18 @@
         <activity android:name=".SurfaceViewAct">
         </activity>
         <activity android:name="com.example.light.activity.RxJavaTestAct">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="com.example.light.activity.RetrofitTestAct">
         </activity>
         <activity android:name="com.example.light.activity.RetrofitTestAct2">
+        </activity>
+        <activity android:name=".SpannableStringAct">
+        </activity>
+        <activity android:name=".WebViewMixImgTextAct">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
