@@ -189,6 +189,9 @@
         <activity android:name=".SpannableStringAct">
         </activity>
         <activity android:name=".WebViewMixImgTextAct">
+        </activity>
+        <activity android:name=".EditTestAct"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
