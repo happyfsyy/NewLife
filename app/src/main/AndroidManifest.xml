@@ -192,6 +192,8 @@
         </activity>
         <activity android:name=".EditTestAct"
             android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity android:name=".RegexTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

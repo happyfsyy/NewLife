@@ -69,3 +69,5 @@
 * RetrofitTestAct、RetrofitTestAct2测试Retrofit的使用。
 * SpannableStringAct测试SpannableString的简单使用。
 * WebViewMixImageTextAct测试图文混排的效果。
+* EditTextAct测试EditText的一些功能，打开收起键盘，监听删除按键，测试简单的图文混排。
+* RegexTestAct测试正则表达式的简单使用。
