@@ -194,6 +194,8 @@
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity android:name=".RegexTestAct">
+        </activity>
+        <activity android:name=".CanvasClipTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
