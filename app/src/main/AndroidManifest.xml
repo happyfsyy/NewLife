@@ -196,6 +196,8 @@
         <activity android:name=".RegexTestAct">
         </activity>
         <activity android:name=".CanvasClipTestAct">
+        </activity>
+        <activity android:name=".CropBitmapAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
