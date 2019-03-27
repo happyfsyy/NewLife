@@ -204,6 +204,8 @@
         <activity android:name=".CropBitmapAct">
         </activity>
         <activity android:name=".CameraAct">
+        </activity>
+        <activity android:name=".JavaTestAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
