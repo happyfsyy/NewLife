@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.annotation.Apple;
+import com.example.annotation.FruitInfoUtil;
 import com.example.utils.HookClickListenerUtils;
 import com.example.utils.LogUtils;
 
@@ -23,6 +25,7 @@ public class JavaTestAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LogUtils.e("测试第一个按钮");
+                FruitInfoUtil.getFruitInfo(Apple.class);
             }
         });
         Button test2=findViewById(R.id.test_button2);
