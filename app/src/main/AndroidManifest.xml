@@ -206,6 +206,8 @@
         <activity android:name=".CameraAct">
         </activity>
         <activity android:name=".JavaTestAct">
+        </activity>
+        <activity android:name=".ParticleAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

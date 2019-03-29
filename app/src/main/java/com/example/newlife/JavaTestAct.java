@@ -10,7 +10,12 @@ import com.example.annotation.FruitInfoUtil;
 import com.example.utils.HookClickListenerUtils;
 import com.example.utils.LogUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +30,8 @@ public class JavaTestAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LogUtils.e("测试第一个按钮");
-                FruitInfoUtil.getFruitInfo(Apple.class);
+//                FruitInfoUtil.getFruitInfo(Apple.class);
+                testIterator();
             }
         });
         Button test2=findViewById(R.id.test_button2);
@@ -55,6 +61,27 @@ public class JavaTestAct extends AppCompatActivity {
         super.onAttachedToWindow();
         ViewGroup decorView=(ViewGroup)getWindow().getDecorView();
         HookClickListenerUtils.getInstance().hookDecorViewClick(decorView);
+    }
+    private void testIterator(){
+        List<String> list1=new ArrayList<>();
+        list1.add("list1");
+        list1.add("list2");
+        list1.add("list3");
+        for(Iterator<String> iterator=list1.iterator();iterator.hasNext();){
+            String temp=iterator.next();
+            if(temp.equals("list2")){
+                iterator.remove();
+            }
+        }
+        for(int i=0;i<list1.size();i++){
+            LogUtils.e(list1.get(i));
+        }
+    }
+    private void testList(){
+        List<String> list=new ArrayList<>();
+        List<String> synList= Collections.synchronizedList(list);
+
+        List<String> list2=new CopyOnWriteArrayList<>();
     }
 }
 class Box<T>{

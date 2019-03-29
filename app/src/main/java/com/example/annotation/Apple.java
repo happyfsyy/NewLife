@@ -1,7 +1,7 @@
 package com.example.annotation;
 
 public class Apple {
-    @FruitName("Apple")
+    @FruitName(value1="Apple")
     private String appleName;
     @FruitColor(fruitColor = FruitColor.Color.RED)
     private String appleColor;
@@ -19,11 +19,9 @@ public class Apple {
     public String getAppleName(){
         return appleName;
     }
-
     public String getAppleProvider() {
         return appleProvider;
     }
-
     public void setAppleProvider(String appleProvider) {
         this.appleProvider = appleProvider;
     }

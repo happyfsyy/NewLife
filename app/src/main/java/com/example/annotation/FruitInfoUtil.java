@@ -13,7 +13,7 @@ public class FruitInfoUtil {
         for(Field field:fields){
             if(field.isAnnotationPresent(FruitName.class)){
                 FruitName fruitName=field.getAnnotation(FruitName.class);
-                strFruitName+=fruitName.value();
+                strFruitName+=fruitName.value1();
                 LogUtils.e(strFruitName);
             }else if(field.isAnnotationPresent(FruitColor.class)){
                 FruitColor fruitColor=field.getAnnotation(FruitColor.class);
@@ -25,7 +25,6 @@ public class FruitInfoUtil {
                         +"供应商地址："+fruitProvider.address();
                 LogUtils.e(strFruitProvider);
             }
-
         }
     }
 }
